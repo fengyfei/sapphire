@@ -14,11 +14,12 @@ println("NaN < NaN -> $(NaN < NaN)")
 println("NaN > NaN -> $(NaN > NaN)")
 
 # Comparisons
+x = 1
 println("\n\n---------------- Comparisons ----------------")
 println("isequal(NaN, NaN32) -> $(isequal(NaN, NaN32))")
-println("isfinite(1) -> $(isfinite(1))")
-println("isinf(1) -> $(isinf(1))")
-println("isnan(1) -> $(isnan(1))")
+for T in [isfinite, isinf, isnan]
+    println("$(T)($(x)) -> $(T(x))")
+end
 
 v(x) = (println(x); x)
 println("v(1) < v(2) <= v(3) -> $(v(1) < v(2) <= v(3))")
@@ -39,31 +40,18 @@ println("trunc(UInt32, $(x)) -> $(trunc(UInt32, x))")
 x = 17
 y = 13
 println("\n\n---------------- Division ----------------")
-println("div($(x), $(y)) -> $(div(x, y))")
-println("fld($(x), $(y)) -> $(fld(x, y))")
-println("cld($(x), $(y)) -> $(cld(x, y))")
-println("rem($(x), $(y)) -> $(rem(x, y))")
-println("mod($(x), $(y)) -> $(mod(x, y))")
-println("mod1($(x), $(y)) -> $(mod1(x, y))")
+for T in [div, fld, cld, rem, mod, mod1, fldmod, gcd, lcm]
+    println("$(T)($(x), $(y)) -> $(T(x, y))")
+end
 println("mod2pi($(x)) -> $(mod2pi(x))")
-println("fldmod($(x), $(y)) -> $(fldmod(x, y))")
-println("gcd($(x), $(y)) -> $(gcd(x, y))")
-println("lcm($(x), $(y)) -> $(lcm(x, y))")
 
 # Power, Logs, Roots
 x = 17.0
 y = 13
 println("\n\n---------------- Power, Logs, Roots ----------------")
-println("sqrt($(x)) -> $(sqrt(x))") # square root
-println("cbrt($(x)) -> $(cbrt(x))") # cube root
+for T in [sqrt, cbrt, exp, expm1, log, log2, log1p, exponent, significand]
+    println("$(T)($(x)) -> $(T(x))")
+end
 println("hypot($(x), $(y)) -> $(hypot(x, y))")
-println("exp($(x)) -> $(exp(x))")
-println("expm1($(x)) -> $(expm1(x))")
 println("ldexp($(x), 3) -> $(ldexp(x, 3))")
-println("log($(x)) -> $(log(x))")
 println("log(3.14, $(x)) -> $(log(3.14, x))")
-println("log2($(x)) -> $(log2(x))")
-println("log10($(x)) -> $(log10(x))")
-println("log1p($(x)) -> $(log1p(x))")
-println("exponent($(x)) -> $(exponent(x))")
-println("significand($(x)) -> $(significand(x))")
